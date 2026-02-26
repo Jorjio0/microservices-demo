@@ -1,4 +1,4 @@
-# E-Commerce Cloud Platform (DevOps Squad)
+# E-Commerce Cloud Platform (DevOps Squad) by team Password1234 
 
 This project is a fully automated microservices platform deployed on Google Cloud Platform (GCP). We have refactored the base template and implemented our own custom infrastructure and CI/CD pipelines.
 
@@ -10,7 +10,8 @@ This project is a fully automated microservices platform deployed on Google Clou
 
 ## Proof of Work
 ### Automation (CI/CD)
-![GitHub Actions Success](IMAGE)
+![GitHub Actions Success](<img width="2879" height="988" alt="image" src="https://github.com/user-attachments/assets/acd1ab99-938e-44f4-984a-d68bcf7b5c88" />
+)
 
 ### Monitoring & Scalability
 ![Monitoring Dashboards](IMAGE)
