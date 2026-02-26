@@ -40,7 +40,7 @@ jobs:
         IMAGE_PATH="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE_NAME }}:${{ env.IMAGE_TAG }}"
         
         echo "Building image: $IMAGE_PATH"
-        docker build -t $IMAGE_PATH ./src/cartservice
+        docker build -t $IMAGE_PATH ./src/cartservice/src
         
         echo "Pushing image..."
         docker push $IMAGE_PATH
