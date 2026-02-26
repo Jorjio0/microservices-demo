@@ -1,0 +1,58 @@
+name: Build and Deploy Cart Service
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'src/cartservice/**'
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  REGION: ${{ secrets.GCP_REGION }}
+  CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  REPO_NAME: microservices-repo
+  SERVICE_NAME: cartservice
+  IMAGE_TAG: ${{ github.sha }} 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+    - name: Get GKE Credentials
+      uses: google-github-actions/get-gke-credentials@v2
+      with:
+        cluster_name: ${{ env.CLUSTER }}
+        location: ${{ env.REGION }}
+
+    - name: Configure Docker for Artifact Registry
+      run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+    - name: Build and Push Docker Image
+      run: |
+        IMAGE_PATH="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE_NAME }}:${{ env.IMAGE_TAG }}"
+        
+        echo "Building image: $IMAGE_PATH"
+        docker build -t $IMAGE_PATH ./src/frontend
+        
+        echo "Pushing image..."
+        docker push $IMAGE_PATH
+
+    - name: Deploy to Staging
+      run: |
+        IMAGE_PATH="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE_NAME }}:${{ env.IMAGE_TAG }}"
+        kubectl set image deployment/${{ env.SERVICE_NAME }} server=$IMAGE_PATH -n staging
+        kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n staging
+
+    - name: Deploy to Production
+      run: |
+        IMAGE_PATH="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE_NAME }}:${{ env.IMAGE_TAG }}"
+        kubectl set image deployment/${{ env.SERVICE_NAME }} server=$IMAGE_PATH -n production
+        kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n production
