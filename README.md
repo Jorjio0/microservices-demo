@@ -10,7 +10,8 @@ This project is a fully automated microservices platform deployed on Google Clou
 
 ## Proof of Work
 ### Automation (CI/CD)
-![GitHub Actions Success](<img width="2880" height="988" alt="Знімок екрана 2026-02-27 010720" src="https://github.com/user attachments/assets/a80f115c-0502-4974-a0b6-00f375eb05c1" />)
+<img width="2880" height="988" alt="Знімок екрана 2026-02-27 010720" src="https://github.com/user-attachments/assets/c311b4fc-f13e-4460-849f-c53a6c0eacf2" />
+
 
 ### Monitoring & Scalability
 ![Monitoring Dashboards](IMAGE)
