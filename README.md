@@ -2,6 +2,11 @@
 
 This project is a fully automated microservices platform deployed on Google Cloud Platform (GCP). We have refactored the base template and implemented our own custom infrastructure and CI/CD pipelines.
 
+### High-Level Cloud Architecture
+Our application is deployed on Google Cloud Platform (GCP). To automate infrastructure provisioning (IaC), we adapted the provided Terraform code, which deploys a Google Kubernetes Engine (GKE) cluster. 
+
+The CI/CD process is fully automated using GitHub Actions. Upon every code update, the pipelines automatically build new Docker images for the microservices, push them to the Container Registry, and update the manifests in the Kubernetes cluster. The system ensures environment isolation by deploying the application into two separate namespaces: `staging` and `production`.
+
 ## Completed Technical Requirements
 - **Infrastructure as Code:** Fully managed via Terraform (GKE Autopilot).
 - **CI/CD:** Custom GitHub Actions pipelines implemented for `frontend` and `cartservice`.
