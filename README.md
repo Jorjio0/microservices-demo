@@ -19,7 +19,10 @@ The CI/CD process is fully automated using GitHub Actions. Upon every code updat
 
 
 ### Monitoring & Scalability
+We have configured monitoring for key cluster metrics to track reliability and scalability using native Google Cloud observability tools.
 <img width="2261" height="1095" alt="dashboard228" src="https://github.com/user-attachments/assets/fc3f835d-8996-42bc-b767-3e866041ff45" />
+**Cluster Observability Dashboard (Resource Utilization & System Reliability):**
+<img width="2832" height="1108" alt="gke-observability" src="https://github.com/user-attachments/assets/02814ea1-89a1-49e6-9d89-9917490c8b1c" />
 
 
 ### Our working environments
