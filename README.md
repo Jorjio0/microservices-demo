@@ -5,13 +5,13 @@ This project is a fully automated microservices platform deployed on Google Clou
 ### High-Level Cloud Architecture
 Our application is deployed on Google Cloud Platform (GCP). To automate infrastructure provisioning (IaC), we adapted the provided Terraform code, which deploys a Google Kubernetes Engine (GKE) cluster. 
 
-The CI/CD process is fully automated using GitHub Actions. Upon every code update, the pipelines automatically build new Docker images for the microservices, push them to the Container Registry, and update the manifests in the Kubernetes cluster. The system ensures environment isolation by deploying the application into two separate namespaces: `staging` and `production`.
+The CI/CD process is fully automated using GitHub Actions. Upon every code update, the pipelines automatically build new Docker images for the microservices, push them to the Artifact Registry, and update the manifests in the Kubernetes cluster. The system ensures environment isolation by deploying the application into two separate namespaces: `staging` and `production`.
 
 ## Completed Technical Requirements
 - **Infrastructure as Code:** Fully managed via Terraform (GKE Autopilot).
 - **CI/CD:** Custom GitHub Actions pipelines implemented for `frontend` and `cartservice`.
 - **Environments:** Isolated `staging` and `production` environments implemented using K8S namespaces.
-- **Monitoring:** Prometheus and Grafana configured for system health and performance monitoring.
+- **Monitoring:** Native Google Cloud Monitoring configured for system health and performance monitoring.
 
 ## Proof of Work
 ### Automation (CI/CD)
@@ -27,7 +27,6 @@ We have configured monitoring for key cluster metrics to track reliability and s
 <img width="2832" height="1108" alt="gke-observability" src="https://github.com/user-attachments/assets/02814ea1-89a1-49e6-9d89-9917490c8b1c" />
 
 
-### Our working environments
 
 ### How to Deploy and Test
 
@@ -35,7 +34,10 @@ We have configured monitoring for key cluster metrics to track reliability and s
 The deployment is fully automated via GitHub Actions. To deploy a new version:
 1. Make a change to the source code (e.g., edit a template in `src/frontend/`).
 2. Commit and push the changes to the `main` branch.
-3. The GitHub Actions pipeline will automatically trigger. It builds the new Docker images, pushes them to the Google Container Registry, and deploys the updated manifests to the GKE cluster into the respective namespaces (`staging` and `production`).
+3. The GitHub Actions pipeline will automatically trigger. It builds the new Docker images, pushes them to the Google Artifact Registry, and deploys the updated manifests to the GKE cluster into the respective namespaces (`staging` and `production`).
+
+
+### Our working environments
 
 **Testing the Application:**
 You can test the live environments by visiting the external IP addresses of our LoadBalancers:
