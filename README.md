@@ -23,7 +23,7 @@ We have configured monitoring for key cluster metrics to track reliability and s
 
 <img width="2261" height="1095" alt="dashboard228" src="https://github.com/user-attachments/assets/fc3f835d-8996-42bc-b767-3e866041ff45" />
 
-**Cluster Observability Dashboard (Resource Utilization & System Reliability):**
+### Cluster Observability Dashboard (Resource Utilization & System Reliability):
 <img width="2832" height="1108" alt="gke-observability" src="https://github.com/user-attachments/assets/02814ea1-89a1-49e6-9d89-9917490c8b1c" />
 
 
@@ -45,10 +45,10 @@ You can test the live environments by visiting the external IP addresses of our 
 * **Staging Environment:** [http://34.116.241.40/](http://34.116.241.40/)
 
 
-**Production Environment**
+### Production Environment
 <img width="2700" height="1520" alt="Знімок екрана 2026-02-27 214445" src="https://github.com/user-attachments/assets/29052af7-0bfd-4b54-b0ac-18a1ccf831d7" />
 
-**Staging Environment**
+### Staging Environment
 <img width="2702" height="1518" alt="dddddddddddd" src="https://github.com/user-attachments/assets/a238b594-a080-479d-8c1b-13bf66aa2fe1" />
 
 
