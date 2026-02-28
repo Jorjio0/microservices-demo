@@ -30,7 +30,11 @@ We have configured monitoring for key cluster metrics to track reliability and s
 
 
 ### Our working environments
+
+**Production Environment**
 <img width="2700" height="1520" alt="Знімок екрана 2026-02-27 214445" src="https://github.com/user-attachments/assets/29052af7-0bfd-4b54-b0ac-18a1ccf831d7" />
+
+**Staging Environment**
 <img width="2702" height="1518" alt="dddddddddddd" src="https://github.com/user-attachments/assets/a238b594-a080-479d-8c1b-13bf66aa2fe1" />
 
 
