@@ -73,28 +73,28 @@ module "gcloud" {
 }
 
 # Apply YAML kubernetes-manifest configurations
-resource "null_resource" "apply_deployment" {
-  provisioner "local-exec" {
-    interpreter = ["bash", "-exc"]
-    command     = "kubectl apply -k ${var.filepath_manifest} -n ${var.namespace}"
-  }
-
-  depends_on = [
-    module.gcloud
-  ]
-}
-
+#resource "null_resource" "apply_deployment" {
+#  provisioner "local-exec" {
+#    interpreter = ["bash", "-exc"]
+#    command     = "kubectl apply -k ${var.filepath_manifest} -n ${var.namespace}"
+#  }
+#
+#  depends_on = [
+#    module.gcloud
+#  ]
+#}
+#
 # Wait condition for all Pods to be ready before finishing
-resource "null_resource" "wait_conditions" {
-  provisioner "local-exec" {
-    interpreter = ["bash", "-exc"]
-    command     = <<-EOT
-    kubectl wait --for=condition=AVAILABLE apiservice/v1beta1.metrics.k8s.io --timeout=180s
-    kubectl wait --for=condition=ready pods --all -n ${var.namespace} --timeout=280s
-    EOT
-  }
-
-  depends_on = [
-    resource.null_resource.apply_deployment
-  ]
-}
+#resource "null_resource" "wait_conditions" {
+#  provisioner "local-exec" {
+#    interpreter = ["bash", "-exc"]
+#    command     = <<-EOT
+#    kubectl wait --for=condition=AVAILABLE apiservice/v1beta1.metrics.k8s.io --timeout=180s
+#    kubectl wait --for=condition=ready pods --all -n ${var.namespace} --timeout=280s
+#    EOT
+#  }
+#
+#  depends_on = [
+#    resource.null_resource.apply_deployment
+#  ]
+#}
