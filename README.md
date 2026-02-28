@@ -29,6 +29,20 @@ We have configured monitoring for key cluster metrics to track reliability and s
 
 ### Our working environments
 
+### How to Deploy and Test
+
+**Deployment Process (CI/CD):**
+The deployment is fully automated via GitHub Actions. To deploy a new version:
+1. Make a change to the source code (e.g., edit a template in `src/frontend/`).
+2. Commit and push the changes to the `main` branch.
+3. The GitHub Actions pipeline will automatically trigger. It builds the new Docker images, pushes them to the Google Container Registry, and deploys the updated manifests to the GKE cluster into the respective namespaces (`staging` and `production`).
+
+**Testing the Application:**
+You can test the live environments by visiting the external IP addresses of our LoadBalancers:
+* **Production Environment:** [http://34.118.104.224/](http://34.118.104.224/)
+* **Staging Environment:** [http://34.116.241.40/](http://34.116.241.40/)
+
+
 **Production Environment**
 <img width="2700" height="1520" alt="Знімок екрана 2026-02-27 214445" src="https://github.com/user-attachments/assets/29052af7-0bfd-4b54-b0ac-18a1ccf831d7" />
 
